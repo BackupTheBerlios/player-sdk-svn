@@ -63,8 +63,21 @@ namespace Player.Configuration
 
 	public string UserConfigDir {
 	    get {
-		return objStore.Location;
+			return objStore.Location;
 	    }
+	}
+
+	public string UserAddinsDir {
+		get {
+			return UserConfigDir;
+		}
+	}
+
+	public string SystemAddinsDir {
+		get {
+			return Path.GetDirectoryName (Assembly.GetCallingAssembly ().Location) +
+				Path.DirectorySeparatorChar + "Player.Sdk";
+		}
 	}
 
 	public string PlayerKitType {

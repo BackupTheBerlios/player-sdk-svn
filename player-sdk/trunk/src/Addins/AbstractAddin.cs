@@ -17,26 +17,40 @@
  * Boston, MA 02111-1307, USA.
  */
 
-namespace Player.Data 
+namespace Player.Addins
 {
-    using System;
-    using System.Collections;
-	using Player.Kits;
+    using System;    
 
-    public interface IDataKit : IKit
-    {
-		ArrayList Songs { get; }
+	public abstract class AbstractAddin : IAddin
+	{
 
-		ArrayList Albums { get; }
+		public abstract string Version { get; }
+		public abstract string Name { get; }
+		public abstract string Description { get; }
+		
+		//Template method	
+		public void Load ()
+		{
+			Load ();
+			if (Loaded != null)
+				Loaded (this, EventArgs.Empty);
+		}
+			
+		protected abstract void LoadAddin ();
 
-		bool AddSong (Song song);
+		//Template method
+		public  void Unload ()
+		{
+			Unload ();
+			if (Unloaded != null)
+				Unloaded (this, EventArgs.Empty);
+		}
+		
+		protected abstract void UnloadAddin ();
 
-		bool AddAlbum (Album album);
-
-		bool RemoveSong (Song song);
-
-		bool RemoveAlbum (Album album);
-    }
+		public event EventHandler Loaded;
+		public event EventHandler Unloaded;
+	}
 
 }
 

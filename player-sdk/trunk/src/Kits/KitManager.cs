@@ -39,20 +39,20 @@ namespace Player.Kits
 			LoadKits ();
 		}
 
-		public IKit this [string kitName]
+		public IAddin this [string kitName]
 		{
 			get {
-				return (IKit) kits[kitName];
+				return (IAddin) kits[kitName];
 			}
 
 			set {
-				((IKit)kits[kitName]).Unload ();
+				((IAddin)kits[kitName]).Unload ();
 				value.Load ();
 				kits[kitName] = value; 
 			}
 		}
 
-		public static KitManager GetInstance ()
+		internal static KitManager GetInstance ()
 		{
 			if (instance == null)
 				instance = new KitManager ();
@@ -63,7 +63,7 @@ namespace Player.Kits
 		{
 		}
 
-		public void SwapKit (string kitType, IKit kit)
+		public void SwapKit (string kitType, IAddin kit)
 		{
 		}
 

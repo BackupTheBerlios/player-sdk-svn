@@ -18,31 +18,19 @@
  */
 
 using System;    
-using Player.Player;
-using Player.Playlist;
-using Player.Data;
-using Player.Kits;
+using System.Collections;
 using Player.Global;
-using Gtk;
+using Player.Addins;
 
-public class PlayerTest
+public class PluginManagerTest
 {
 	public static void Main ()
 	{
-		Application.Init ();
-		PlayerServices.Init ();
-		Playlist p = new Playlist ();
-		p.Add (new Song ("test.ogg"));
-		PlayerKit kit = (PlayerKit) PlayerServices.KitManager ["PlayerKit"];
-		kit.EOSEvent += EndOfStream;
-		kit.Volume = 50;
-		kit.Playlist = p;
-		kit.Play ();
-		Application.Run ();
-	}
-	public static void EndOfStream ()
-	{
-		Application.Quit ();
+		ArrayList plugins = PlayerServices.PluginManager.GetLoadedPlugins ();
+		foreach (IAddin addin in plugins)
+		{
+			Console.WriteLine ("Plugin loaded: " + addin.Name);
+		}
 	}
 }
 

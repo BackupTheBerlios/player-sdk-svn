@@ -29,6 +29,9 @@ namespace Player.Addins
 		string Description { get; }
 		void Load ();
 		void Unload ();
+
+		event EventHandler Loaded;
+		event EventHandler Unloaded;
 		
 	}
 

@@ -37,6 +37,8 @@ AC_OUTPUT([
 Makefile
 examples/Makefile
 doc/Makefile
+Plugins/Makefile
+Plugins/test/Makefile
 src/Makefile
 src/player-sdk.pc
 PlayerKits/Makefile

@@ -17,32 +17,21 @@
  * Boston, MA 02111-1307, USA.
  */
 
-using System;    
-using Player.Player;
-using Player.Playlist;
-using Player.Data;
-using Player.Kits;
-using Player.Global;
-using Gtk;
-
-public class PlayerTest
+namespace Player.Global
 {
-	public static void Main ()
+    using System;    
+	using Player.Kits;
+	using Player.Plugins;
+	
+	public class PlayerServices
 	{
-		Application.Init ();
-		PlayerServices.Init ();
-		Playlist p = new Playlist ();
-		p.Add (new Song ("test.ogg"));
-		PlayerKit kit = (PlayerKit) PlayerServices.KitManager ["PlayerKit"];
-		kit.EOSEvent += EndOfStream;
-		kit.Volume = 50;
-		kit.Playlist = p;
-		kit.Play ();
-		Application.Run ();
+		public readonly static PluginManager PluginManager = PluginManager.GetInstance ();
+		public readonly static KitManager KitManager = KitManager.GetInstance ();
+		private PlayerServices () {}
+	
+		public static void Init () {}
 	}
-	public static void EndOfStream ()
-	{
-		Application.Quit ();
-	}
+
+
 }
 

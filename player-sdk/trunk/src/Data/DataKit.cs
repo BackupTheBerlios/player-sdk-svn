@@ -17,32 +17,26 @@
  * Boston, MA 02111-1307, USA.
  */
 
-using System;    
-using Player.Player;
-using Player.Playlist;
-using Player.Data;
-using Player.Kits;
-using Player.Global;
-using Gtk;
-
-public class PlayerTest
+namespace Player.Data 
 {
-	public static void Main ()
-	{
-		Application.Init ();
-		PlayerServices.Init ();
-		Playlist p = new Playlist ();
-		p.Add (new Song ("test.ogg"));
-		PlayerKit kit = (PlayerKit) PlayerServices.KitManager ["PlayerKit"];
-		kit.EOSEvent += EndOfStream;
-		kit.Volume = 50;
-		kit.Playlist = p;
-		kit.Play ();
-		Application.Run ();
-	}
-	public static void EndOfStream ()
-	{
-		Application.Quit ();
-	}
+    using System;
+    using System.Collections;
+	using Player.Addins;
+
+    public abstract class DataKit : AbstractAddin
+    {
+		public abstract ArrayList Songs { get; }
+
+		public abstract ArrayList Albums { get; }
+
+		public abstract bool AddSong (Song song);
+
+		public abstract bool AddAlbum (Album album);
+
+		public abstract bool RemoveSong (Song song);
+
+		public abstract bool RemoveAlbum (Album album);
+    }
+
 }
 

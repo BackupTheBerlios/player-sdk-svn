@@ -26,6 +26,7 @@ namespace Player.Addins
 
 	public class AddinLoader
 	{
+		private static Configuration config = Configuration.GetInstance ();
 
 		public static IAddin LoadAddin (string addinDir, string addinAssembly, string addinType)
 		{
@@ -35,7 +36,7 @@ namespace Player.Addins
 			//First, the addin is loaded from the user config dir.
 			//If not, try to the system wide addin.
 			try {
-				string userConfigDir = Configuration.GetInstance ().UserConfigDir;
+				string userConfigDir = config.UserConfigDir;
 				string userAddinLocation;
 				if (addinAssembly.EndsWith (".dll"))
 					userAddinLocation = userConfigDir + separator + addinDir + separator + addinAssembly;
@@ -53,9 +54,10 @@ namespace Player.Addins
 				//Loading from system addins
 				} else {
 					Console.WriteLine ("Loading {0} from SYSTEM addins", addinAssembly);
-					string sdkDir = Path.GetDirectoryName (Assembly.GetCallingAssembly ().Location);
-					string systemAddinLocation = sdkDir + separator + "Player.Sdk" + 
-								separator + addinDir + separator + addinAssembly + ".dll";
+					string sdkDir = config.SystemAddinsDir;
+					//string sdkDir = Path.GetDirectoryName (Assembly.GetCallingAssembly ().Location);
+					string systemAddinLocation = sdkDir + separator + 
+								addinDir + separator + addinAssembly + ".dll";
 					Console.WriteLine ("Addin location: {0}", systemAddinLocation);
 					asm = Assembly.LoadFrom (systemAddinLocation);
 					if (asm != null)

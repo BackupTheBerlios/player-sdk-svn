@@ -19,21 +19,61 @@
 
 namespace Player.Plugins 
 {
+	using System.IO;
     using System;
 	using System.Collections;
+	using System.Reflection;
+	using Player.Configuration;
+	using Player.Addins;
 
-	public class PluginManager
+	public class PluginManager : IEnumerable
 	{
 
-		private Hashtable plugins;
-		private Hashtable loadedPlugins;
+		private Hashtable pluginCollection = new Hashtable ();
+		private static Configuration config = Configuration.GetInstance ();
+		private string systemPluginsDir = config.SystemAddinsDir + Path.DirectorySeparatorChar + "Plugins";
+		private string userPluginsDir = config.UserAddinsDir + Path.DirectorySeparatorChar + "Plugins";
+		private static PluginManager manager;
+		
+		private PluginManager () {
+			LoadAllPlugins ();
+		}
 
-		public PluginManager ()
+		internal static PluginManager GetInstance ()
 		{
+			if (manager == null)
+				manager = new PluginManager ();
+			return manager;
 		}
 
 		internal void LoadAllPlugins ()
 		{
+			string[] pluginFiles = Directory.GetFiles (systemPluginsDir);
+			foreach (string pluginFile in pluginFiles)
+			{
+				Assembly pluginAssembly = Assembly.LoadFrom (pluginFile);
+				Type attrType = typeof (PluginInfoAttribute);
+				if (pluginAssembly.IsDefined (attrType, false))
+				{
+					PluginInfoAttribute attr = (PluginInfoAttribute) pluginAssembly.GetCustomAttributes (attrType, false)[0];
+					IAddin plugin = (IAddin) pluginAssembly.CreateInstance (attr.Class);
+					if (plugin != null)
+						AddPluginToCollections (plugin);
+						
+				} else
+					Console.WriteLine ("Invalid plugin");
+			}
+
+		}
+
+		public IEnumerator GetEnumerator ()
+		{
+			return pluginCollection.GetEnumerator ();
+		}
+
+		public ArrayList GetLoadedPlugins ()
+		{
+			return new ArrayList (pluginCollection.Values);
 		}
 
 		public void UnloadPlugin (string pluginId)
@@ -54,6 +94,23 @@ namespace Player.Plugins
 
 		public void EnablePlugin (string pluginId)
 		{
+		}
+
+		public string MakePluginHash (IAddin plugin)
+		{
+			return plugin.Name;	
+		}
+
+		//FIXME: Check if the plugin has been disabled and do not load it
+		private void AddPluginToCollections (IAddin plugin)
+		{
+			string hash = MakePluginHash (plugin);
+			if (pluginCollection.Contains (hash))
+				throw new PluginLoadingException ("Plugin already loaded.");
+			else
+			{
+				pluginCollection.Add (hash, plugin);
+			}
 		}
 	}
 

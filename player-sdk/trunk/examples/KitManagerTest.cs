@@ -26,7 +26,7 @@ public class KitManagerTest
 	public static void Main ()
 	{
 		Application.Init ();
-		KitManager manager = KitManager.GetInstance ();
+		//PlayerServices.KitManager;
 		Application.Run ();
 	}
 }

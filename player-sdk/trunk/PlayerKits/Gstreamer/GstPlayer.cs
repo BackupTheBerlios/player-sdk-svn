@@ -27,44 +27,27 @@ using Player.Player;
 using Player.Playlist;
 using Player.Data;
 
-public class GstPlayer : GLib.Object, IPlayerKit
+public class GstPlayer : PlayerKit
 {
 
     private bool stopped = true;
     private IPlaylist playlist;
+	private PlayerObject player = new PlayerObject ();
     
-	/*
-     * Main constructor
-     */
-    public GstPlayer (IPlaylist playlist) : base (IntPtr.Zero)
+    public GstPlayer (IPlaylist playlist)
     {
-		g_type_init ();
 	    this.playlist = playlist;
-	    IntPtr error_ptr;
-	    
-	    Raw = player_new (out error_ptr);
-	    if (error_ptr != IntPtr.Zero) {
-		    string error = GLib.Marshaller.PtrToStringGFree (error_ptr);
-
-		    throw new Exception (error);
-	    }
-	    
-	    ConnectInt.g_signal_connect_data (Raw, "tick", new IntSignalDelegate (TickCallback),
-					      IntPtr.Zero, IntPtr.Zero, 0);
-	    Connect.g_signal_connect_data (Raw, "end_of_stream", new SignalDelegate (EosCallback),
-					   IntPtr.Zero, IntPtr.Zero, 0);
-	    ConnectString.g_signal_connect_data (Raw, "error", new StringSignalDelegate (ErrorCallback),
-						 IntPtr.Zero, IntPtr.Zero, 0);
-
+		player.TickEvent += TickCallback;
+		player.EOSEvent += EosCallback;
 	    playing = false;
     }
+    
+	public override event TickEventHandler TickEvent;
+    public override event EOSEventHandler EOSEvent;
+    public override event StateEventHandler StateEvent;
 
-    public event StateEventHandler StateEvent;
-    /*
-     * Indicates whether the player is playing or paused.
-     */
     private bool playing;
-    public bool Playing {
+    public override bool Playing {
 	    get {
 		    return playing;
 	    }
@@ -85,39 +68,30 @@ public class GstPlayer : GLib.Object, IPlayerKit
 	    }
     }
 
-
-    public event TickEventHandler TickEvent;
-
-    /*
-     * Set or get the position in the song.
-     */
-    public int Position {
+    public override int Position {
 	    get {
-		    return player_tell (Raw);
+			return player.Tell ();
 	    }
 
 	    set {
-		    player_seek (Raw, value);
+		    player.Seek (value);
 
 		    if (TickEvent != null)
 			    TickEvent (value);
 	    }
     }
 
-    /*
-     * Controls the volume level of the player;
-     */
-    public int Volume {
+    public override int Volume {
 	    get {
-		    return player_get_volume (Raw);
+		    return player.Volume;
 	    }
 
 	    set {
-		    player_set_volume (Raw, value);
+			player.Volume = value;
 	    }
     }
 
-    public IPlaylist Playlist {
+    public override IPlaylist Playlist {
 		get {
 			return playlist;
 		}
@@ -128,38 +102,36 @@ public class GstPlayer : GLib.Object, IPlayerKit
     }
 
 	private string name = "GstPlayerKit";
-	public string Name {
+	public override string Name {
 		get {
 			return name;
 		}
 	}
 
 	private string description = "Gstreamer Player Kit";
-	public string Description {
+	public override string Description {
 		get {
 			return description;
 		}
 	}
 
 	private string version = "0.1";
-	public string Version {
+	public override string Version {
 		get {
 			return version;
 		}
 	}
 	
-	public void Load ()
+	protected override void LoadAddin ()
 	{
 	}
 
-	public void Unload ()
+	protected override void UnloadAddin ()
 	{
 	}
 
-    public void Play ()
+    public override void Play ()
     {
-
-	    IntPtr error_ptr;
 
 	    Song song = playlist.Current;
 		if (song == null || !File.Exists(song.Filename))
@@ -167,38 +139,26 @@ public class GstPlayer : GLib.Object, IPlayerKit
 			Console.WriteLine ("WARNING: Playlist empty or invalid.");
 			return;
 		}
-	    player_set_file (Raw, song.Filename , out error_ptr);
-	    if (error_ptr != IntPtr.Zero) {
-		    string error = GLib.Marshaller.PtrToStringGFree (error_ptr);
-		    Console.WriteLine ("Error opening the player");
-	    }
-	    
-	    player_set_replaygain (Raw, song.Gain, song.Peak);
-
 	    if (TickEvent != null)
 		    TickEvent (0);
 
 	    if (!playing)
 			playing = true;
-		Console.WriteLine ("Playing " + song.Filename);
-		player_play (Raw);
+		player.Play (song);
 		
     }
 
-    public void Pause ()
+    public override void Pause ()
     {
-		player_pause (Raw);
+		player.Pause ();
     }
     
-    /*
-     * Stop playing the song.
-     */
-    public void Stop ()
+    public override void Stop ()
     {
 	    if (stopped)
 		    return;
 		    
-	    player_stop (Raw);
+	    player.Stop ();
 	    stopped = true;
 
 	    if (playing == false)
@@ -210,53 +170,136 @@ public class GstPlayer : GLib.Object, IPlayerKit
 		    StateEvent (playing);
     }
     
-    public void Next ()
+    public override void Next ()
     {
-	throw new NotImplementedException ();
+		throw new NotImplementedException ();
     }
     
-    public void Previous ()
+    public override void Previous ()
     {
-	throw new NotImplementedException ();
+		throw new NotImplementedException ();
     }
     
-    public void Repeat (RepetitionType type)
+    public override void Repeat (RepetitionType type)
     {
-	throw new NotImplementedException ();
+		throw new NotImplementedException ();
     }
 
     public GstPlayer () : this (new Playlist ())
     {
     }
 
-    ~GstPlayer ()
-    {
-	    Dispose ();
-    }
-
-    private delegate void SignalDelegate (IntPtr obj);
-    private delegate void IntSignalDelegate (IntPtr obj, int i);
-    private delegate void StringSignalDelegate (IntPtr obj, string s);
-
-    private void TickCallback (IntPtr obj, int pos)
+    private void TickCallback (int pos)
     {	
 	    if (TickEvent != null)
 		    TickEvent (pos);
     }
+	private void EosCallback ()
+    {
+	    if (EOSEvent != null)
+		{
+		    EOSEvent ();
+		}
+    }
 
-    public event EOSEventHandler EOSEvent;
+}
+
+class PlayerObject : GLib.Object
+{
+
+    public PlayerObject () : base (IntPtr.Zero)
+    {
+		g_type_init ();
+	    IntPtr error_ptr;
+	    
+	    Raw = player_new (out error_ptr);
+	    if (error_ptr != IntPtr.Zero) {
+		    string error = GLib.Marshaller.PtrToStringGFree (error_ptr);
+
+		    throw new Exception (error);
+	    }
+	    
+		ConnectInt.g_signal_connect_data (Raw, "tick", new IntSignalDelegate (TickCallback),
+					      IntPtr.Zero, IntPtr.Zero, 0);
+	    Connect.g_signal_connect_data (Raw, "end_of_stream", new SignalDelegate (EosCallback),
+					   IntPtr.Zero, IntPtr.Zero, 0);
+	    ConnectString.g_signal_connect_data (Raw, "error", new StringSignalDelegate (ErrorCallback),
+						 IntPtr.Zero, IntPtr.Zero, 0);
+    }
+	
+	~PlayerObject ()
+	{
+		Dispose ();
+	}
     
-    private void EosCallback (IntPtr obj)
+	public event TickEventHandler TickEvent;
+    public event EOSEventHandler EOSEvent;
+
+	public int Tell ()
+	{
+		return player_tell (Raw);
+	}
+
+	public void Seek (int value)
+	{
+		player_seek (Raw, value);
+	}
+    
+	public int Volume {
+	    get {
+		    return player_get_volume (Raw);
+	    }
+
+	    set {
+		    player_set_volume (Raw, value);
+	    }
+    }
+    
+	public void Play (Song song)
+    {
+
+	    IntPtr error_ptr;
+
+	    player_set_file (Raw, song.Filename , out error_ptr);
+	    if (error_ptr != IntPtr.Zero) {
+		    string error = GLib.Marshaller.PtrToStringGFree (error_ptr);
+		    Console.WriteLine ("Error opening the player");
+	    }
+	    
+	    player_set_replaygain (Raw, song.Gain, song.Peak);
+		player_play (Raw);
+    }
+    
+	public void Pause ()
+    {
+		player_pause (Raw);
+    }
+    
+	public void Stop ()
+    {
+	    player_stop (Raw);
+    }
+    
+	private void TickCallback (IntPtr obj, int pos)
+    {	
+	    if (TickEvent != null)
+		    TickEvent (pos);
+    }
+	
+	private void ErrorCallback (IntPtr obj, string error)
+    {
+		Console.WriteLine ("ERROR ErrorCallback: error");
+    }
+	
+	private void EosCallback (IntPtr obj)
     {
 	    if (EOSEvent != null)
 		    EOSEvent ();
     }
 
-    private void ErrorCallback (IntPtr obj, string error)
-    {
-	Console.WriteLine ("ERROR ErrorCallback: error");
-    }
-
+    private delegate void SignalDelegate (IntPtr obj);
+    private delegate void IntSignalDelegate (IntPtr obj, int i);
+    private delegate void StringSignalDelegate (IntPtr obj, string s);
     /***********************************************************/	
     /********************** Native calls ***********************/
     /***********************************************************/	
@@ -319,10 +362,5 @@ public class GstPlayer : GLib.Object, IPlayerKit
     private static extern void player_set_replaygain (IntPtr player,
 						      double gain,
 						      double peak);
-    //public static void Main (string[] args)
-    //{
-    //    Gtk.Application.Init ();
-    //    GstPlayer gst = new GstPlayer ();
-    //    Gtk.Application.Run ();
-    //}
+
 }

@@ -27,7 +27,7 @@ namespace Player.Data.Kits
     using System.IO;
     using System.Text;
 
-    public class SqliteDataKit : IDataKit 
+    public class SqliteDataKit : DataKit 
     {
 	private SqliteConnection conn;
 	private string dbfile = "musicdb.sqlite";
@@ -45,28 +45,28 @@ namespace Player.Data.Kits
 	}
 
 	private string name = "SqliteDataKit";
-	public string Name {
+	public override string Name {
 		get {
 			return name;
 		}
 	}
 	
 	private string version = "0.1";
-	public string Version {
+	public override string Version {
 		get {
 			return version;
 		}
 	}
 	
 	private string description = "Player.SDK sqlite database kit";
-	public string Description {
+	public override string Description {
 		get {
 			return description;
 		}
 	}
 	
 
-	public ArrayList Songs {
+	public override ArrayList Songs {
 	    get {
 		ArrayList songs = new ArrayList ();
 		SqliteCommand cmd = new SqliteCommand ();
@@ -94,7 +94,7 @@ namespace Player.Data.Kits
 	    }
 	}
 
-	public ArrayList Albums {
+	public override ArrayList Albums {
 	    get {
 		ArrayList albums = new ArrayList ();
 		SqliteCommand cmd = new SqliteCommand ();
@@ -117,15 +117,15 @@ namespace Player.Data.Kits
 	    }
 	}
 
-	public void Load ()
+	protected override void LoadAddin ()
 	{
 	}
 
-	public void Unload ()
+	protected override void UnloadAddin ()
 	{
 	}
 
-	public bool AddSong (Song song)
+	public override bool AddSong (Song song)
 	{
 	    string artists = ArrayToSqlString (song.Artists);
 	    string performers = ArrayToSqlString (song.Performers);
@@ -150,7 +150,7 @@ namespace Player.Data.Kits
 	    return false;
 	}
 
-	public bool AddAlbum (Album album)
+	public override bool AddAlbum (Album album)
 	{
 
 	    string songs = ArrayToSqlString (album.Songs);
@@ -172,7 +172,7 @@ namespace Player.Data.Kits
 	    return false;
 	}
 
-	public bool RemoveSong (Song song)
+	public override bool RemoveSong (Song song)
 	{
 	    SqliteCommand cmd = new SqliteCommand ();
 	    cmd.Connection = conn;
@@ -183,7 +183,7 @@ namespace Player.Data.Kits
 	    return false;
 	}
 
-	public bool RemoveAlbum (Album album)
+	public override bool RemoveAlbum (Album album)
 	{
 	    SqliteCommand cmd = new SqliteCommand ();
 	    cmd.Connection = conn;
@@ -230,7 +230,7 @@ namespace Player.Data.Kits
 	    command.Dispose ();
 	}
 	
-	public string ArrayToSqlString (ArrayList list)
+	private string ArrayToSqlString (ArrayList list)
 	{
 	    StringBuilder builder = new StringBuilder ();
 	    foreach (string s in list)
@@ -241,7 +241,7 @@ namespace Player.Data.Kits
 	    return builder.ToString ();
 	}
 
-	public ArrayList SqlStringToArray (string list)
+	private ArrayList SqlStringToArray (string list)
 	{
 	    string[] tokens = list.Split ('%');
 	    ArrayList array = new ArrayList ();

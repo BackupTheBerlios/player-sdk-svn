@@ -1,3 +1,47 @@
+2004-11-10  Sergio Rubio  <sergio.rubio@hispalinux.es>
+
+	* DataKits/Sqlite/SqliteDataKit.cs: Adapted to the new API
+	* Makefile.am: Added Plugins subdir
+	* PlayerKits/Gstreamer/GstPlayer.cs: Cleaned and adapted to the new api
+	
+	* Plugins/Makefile.am:
+	* Plugins/test/Makefile.am:
+	* Plugins/test/PluginTest.cs: Added a new Plugin to test the plugin
+	loading mechanism.
+	
+	* configure.in: added new makefiles
+	
+	* examples/Makefile.am: added new Example
+	
+	* examples/PlayerTest.cs: Fixed to use the new api
+	
+	* examples/PluginManagerTest.cs: New example
+	
+	* src/Addins/AbstractAddin.cs:
+	* src/Addins/AddinLoader.cs:
+	* src/Addins/IAddin.cs:
+	* src/Configuration/Configuration.cs:
+	* src/Data/DataKit.cs:
+	* src/Data/IDataKit.cs:
+	* src/Global/PlayerServices.cs:
+	* src/Kits/IKit.cs:
+	* src/Kits/KitManager.cs:
+	* src/Player/IPlayerKit.cs:
+	* src/Player/PlayerKit.cs:
+	* src/Plugins/IPlugin.cs:
+	* src/Plugins/PluginInfoAttribute.cs:
+	* src/Plugins/PluginLoadingException.cs:
+	* src/Plugins/PluginManager.cs:
+	API refactoring: IPlugin and IKit does not exist anymore. There is no
+	difference between them ATM so Kits and Plugins are different implementations of
+	Addins. This makes the api smaller and easier to understand IMHO. AbstractAddin
+	implements some logic, so Plugins and new Kits inherit from this instead
+	of inheriting from IAddin.
+	IDataKit and IPlayerKit are now DataKit and PlayerKit abstract classes
+	inheriting from AbstractAddin.
+	
+	* src/sources.list: updated
+
 2004-11-09  Sergio Rubio  <sergio.rubio@hispalinux.es>
 
 	* TODO: Updated

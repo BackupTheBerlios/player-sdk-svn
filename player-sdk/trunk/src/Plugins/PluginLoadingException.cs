@@ -17,13 +17,13 @@
  * Boston, MA 02111-1307, USA.
  */
 
-namespace Player.Kits 
+namespace Player.Plugins 
 {
     using System;    
-	using Player.Addins;
 
-	public interface IKit : IAddin
+	public class PluginLoadingException : ApplicationException
 	{
+		public PluginLoadingException (string msg) : base (msg) {}
 	}
 
 }

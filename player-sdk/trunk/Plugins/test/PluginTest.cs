@@ -17,14 +17,47 @@
  * Boston, MA 02111-1307, USA.
  */
 
-namespace Player.Plugins 
-{
-    using System;
-	using Player.Addins;
+using System;    
+using Player.Addins;
 
-	public interface IPlugin : IAddin
+[assembly:PluginInfo ("PluginTest")]
+public class PluginTest : AbstractAddin
+{
+	public PluginTest ()
 	{
 	}
 
+	private string version = "0.1";
+	public override string Version {
+		get {
+			return version;
+		}
+	}
+
+	private string name = "PluginTest";
+	public override string Name {
+		get {
+			return name;
+		}
+	}
+	
+	private string description = "Plugin Test example";
+	public override string Description {
+		get {
+			return description;
+		}
+	}
+
+	protected override void LoadAddin ()
+	{
+		base.Load ();
+		Console.WriteLine ("Calling Load in {0}.", Name);
+	}
+
+	protected override void UnloadAddin ()
+	{
+		base.Unload ();
+		Console.WriteLine ("Calling Unload in {0}.", Name);
+	}
 }
 
