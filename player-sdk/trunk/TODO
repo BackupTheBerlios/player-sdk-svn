@@ -1,13 +1,15 @@
-Plugin Architecture
+General
+---------
+* Use log4net
+* Include the Nini framework and remove chicken dep
+
+Plugins
 --------------------
-* Add support for a plugin arch. Plugins should be able to be
-loaded and unloaded from user dir or system wide.
-* Plugins have access to the sdk services.
-* Some example plugins:
+* Finish implementation and add some test 
+* Implement some plugins
 	- Exporting playlist as a webservice.
 	- DBus support
 	- Playlist export
-
 
 DataKits
 ---------
