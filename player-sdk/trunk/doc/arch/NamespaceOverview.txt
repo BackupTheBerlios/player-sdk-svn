@@ -1,0 +1,9 @@
+* Player.Data: abstract data types and Db services.
+
+* Player.Configuration: Basic configuration logic for the framework. Currently I am using Nini (http://nini.sf.net) to keep the config in a .ini file. We could write a Nini backend to use gconf if we want. Although i think it is not necessary ATM.
+
+* Player.Player: player services.
+
+* Player.Playlist: playlist services.
+
+* Player.Services: basic logic to load the kits and so on. 
