@@ -17,20 +17,14 @@
  * Boston, MA 02111-1307, USA.
  */
 
-namespace Muine.Sdk.Services 
+namespace Player.Plugins 
 {
     using System;
-    using Muine.Sdk.Player;
+	using Player.Addins;
 
-public class SdkServicesTest
-{
-    public static void Main (string[] args)
-    {
-	Gtk.Application.Init ();
-	IPlayer player = SdkServices.Player;
-	Gtk.Application.Run ();
-    }
-}
+	public interface IPlugin : IAddin
+	{
+	}
 
 }
 

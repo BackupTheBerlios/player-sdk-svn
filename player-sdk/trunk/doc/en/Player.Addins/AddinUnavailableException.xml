@@ -1,5 +1,5 @@
-<Type Name="ServiceUnavailableException" FullName="Player.Services.ServiceUnavailableException">
-  <TypeSignature Language="C#" Value="public class ServiceUnavailableException : System.Exception, ISerializable" Maintainer="auto" />
+<Type Name="AddinUnavailableException" FullName="Player.Addins.AddinUnavailableException">
+  <TypeSignature Language="C#" Value="public class AddinUnavailableException : System.ApplicationException, ISerializable" Maintainer="auto" />
   <AssemblyInfo>
     <AssemblyName>Player.Sdk</AssemblyName>
     <AssemblyPublicKey>
@@ -14,7 +14,7 @@
     <remarks>To be added</remarks>
   </Docs>
   <Base>
-    <BaseTypeName>System.Exception</BaseTypeName>
+    <BaseTypeName>System.ApplicationException</BaseTypeName>
   </Base>
   <Interfaces>
     <Interface>
@@ -24,32 +24,32 @@
   <Attributes />
   <Members>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ServiceUnavailableException (string message, Exception innerException);" />
+      <MemberSignature Language="C#" Value="public AddinUnavailableException (string msg, Exception e);" />
       <MemberType>Constructor</MemberType>
       <ReturnValue />
       <Parameters>
-        <Parameter Name="message" Type="System.String" />
-        <Parameter Name="innerException" Type="System.Exception" />
+        <Parameter Name="msg" Type="System.String" />
+        <Parameter Name="e" Type="System.Exception" />
       </Parameters>
       <Docs>
         <summary>To be added</summary>
-        <param name="message">a <see cref="T:System.String" /></param>
-        <param name="innerException">a <see cref="T:System.Exception" /></param>
-        <returns>a <see cref="T:Player.Services.ServiceUnavailableException" /></returns>
+        <param name="msg">a <see cref="T:System.String" /></param>
+        <param name="e">a <see cref="T:System.Exception" /></param>
+        <returns>a <see cref="T:Player.Addins.AddinUnavailableException" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>
     <Member MemberName=".ctor">
-      <MemberSignature Language="C#" Value="public ServiceUnavailableException (string message);" />
+      <MemberSignature Language="C#" Value="public AddinUnavailableException (string msg);" />
       <MemberType>Constructor</MemberType>
       <ReturnValue />
       <Parameters>
-        <Parameter Name="message" Type="System.String" />
+        <Parameter Name="msg" Type="System.String" />
       </Parameters>
       <Docs>
         <summary>To be added</summary>
-        <param name="message">a <see cref="T:System.String" /></param>
-        <returns>a <see cref="T:Player.Services.ServiceUnavailableException" /></returns>
+        <param name="msg">a <see cref="T:System.String" /></param>
+        <returns>a <see cref="T:Player.Addins.AddinUnavailableException" /></returns>
         <remarks>To be added</remarks>
       </Docs>
     </Member>

@@ -16,6 +16,6 @@ all: GstPlayer.dll libgstplayer.so
 libgstplayerdir = $(prefix)/lib/Player.Sdk/PlayerKits
 libgstplayer_DATA = GstPlayer.dll libgstplayer.so GstPlayer.dll.config
 
-EXTRA_DIST = GstPlayer.dll.config $(CSSOURCES) $(CSOURCES) $(CHEADERS)
+EXTRA_DIST = GstPlayer.dll.config.in $(CSSOURCES) $(CSOURCES) $(CHEADERS)
 
-CLEANFILES = GstPlayer.dll libgstplayer.so
+CLEANFILES = GstPlayer.dll libgstplayer.so GstPlayer.dll.config

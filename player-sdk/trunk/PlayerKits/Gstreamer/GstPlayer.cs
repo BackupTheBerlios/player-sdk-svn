@@ -26,7 +26,7 @@ using Player.Player;
 using Player.Playlist;
 using Player.Data;
 
-public class GstPlayer : GLib.Object, IPlayer
+public class GstPlayer : GLib.Object, IPlayerKit
 {
 
     private bool stopped = true;
@@ -60,51 +60,6 @@ public class GstPlayer : GLib.Object, IPlayer
 	    }
     }
 
-    public void Play ()
-    {
-
-	    IntPtr error_ptr;
-
-	    Song song = playlist.Current;
-	    player_set_file (Raw, song.Filename , out error_ptr);
-	    if (error_ptr != IntPtr.Zero) {
-		    string error = GLib.Marshaller.PtrToStringGFree (error_ptr);
-		    Console.WriteLine ("Error opening the player");
-	    }
-	    
-	    player_set_replaygain (Raw, song.Gain, song.Peak);
-
-	    if (TickEvent != null)
-		    TickEvent (0);
-
-	    if (playing)
-		    player_play (Raw);
-    }
-
-    public void Pause ()
-    {
-	player_pause (Raw);
-    }
-    
-    /*
-     * Stop playing the song.
-     */
-    public void Stop ()
-    {
-	    if (stopped)
-		    return;
-		    
-	    player_stop (Raw);
-	    stopped = true;
-
-	    if (playing == false)
-		    return;
-
-	    playing = false;
-
-	    if (StateEvent != null)
-		    StateEvent (playing);
-    }
 
     public event TickEventHandler TickEvent;
 
@@ -138,13 +93,88 @@ public class GstPlayer : GLib.Object, IPlayer
     }
 
     public IPlaylist Playlist {
-	get {
-	    return playlist;
+		get {
+			return playlist;
+		}
+		set {
+			Stop ();
+			this.playlist = value;
+		}
+    }
+
+	private string name = "GstPlayerKit";
+	public string Name {
+		get {
+			return name;
+		}
 	}
-	set {
-	    Stop ();
-	    this.playlist = value;
+
+	private string description = "Gstreamer Player Kit";
+	public string Description {
+		get {
+			return description;
+		}
 	}
+
+	private string version = "0.1";
+	public string Version {
+		get {
+			return version;
+		}
+	}
+	
+	public void Load ()
+	{
+	}
+
+	public void Unload ()
+	{
+	}
+
+    public void Play ()
+    {
+
+	    IntPtr error_ptr;
+
+	    Song song = playlist.Current;
+	    player_set_file (Raw, song.Filename , out error_ptr);
+	    if (error_ptr != IntPtr.Zero) {
+		    string error = GLib.Marshaller.PtrToStringGFree (error_ptr);
+		    Console.WriteLine ("Error opening the player");
+	    }
+	    
+	    player_set_replaygain (Raw, song.Gain, song.Peak);
+
+	    if (TickEvent != null)
+		    TickEvent (0);
+
+	    if (playing)
+		    player_play (Raw);
+    }
+
+    public void Pause ()
+    {
+		player_pause (Raw);
+    }
+    
+    /*
+     * Stop playing the song.
+     */
+    public void Stop ()
+    {
+	    if (stopped)
+		    return;
+		    
+	    player_stop (Raw);
+	    stopped = true;
+
+	    if (playing == false)
+		    return;
+
+	    playing = false;
+
+	    if (StateEvent != null)
+		    StateEvent (playing);
     }
     
     public void Next ()

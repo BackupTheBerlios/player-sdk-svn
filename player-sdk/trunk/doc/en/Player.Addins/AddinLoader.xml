@@ -1,0 +1,54 @@
+<Type Name="AddinLoader" FullName="Player.Addins.AddinLoader">
+  <TypeSignature Language="C#" Value="public class AddinLoader" Maintainer="auto" />
+  <AssemblyInfo>
+    <AssemblyName>Player.Sdk</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <AssemblyCulture>neutral</AssemblyCulture>
+    <Attributes />
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes />
+  <Members>
+    <Member MemberName="LoadAddin">
+      <MemberSignature Language="C#" Value="public static Player.Addins.IAddin LoadAddin (string addinDir, string addinAssembly, string addinType);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Player.Addins.IAddin</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="addinDir" Type="System.String" />
+        <Parameter Name="addinAssembly" Type="System.String" />
+        <Parameter Name="addinType" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="addinDir">a <see cref="T:System.String" /></param>
+        <param name="addinAssembly">a <see cref="T:System.String" /></param>
+        <param name="addinType">a <see cref="T:System.String" /></param>
+        <returns>a <see cref="T:Player.Addins.IAddin" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public AddinLoader ();" />
+      <MemberType>Constructor</MemberType>
+      <ReturnValue />
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Player.Addins.AddinLoader" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

@@ -27,7 +27,7 @@ namespace Player.Data.Kits
     using System.IO;
     using System.Text;
 
-    public class SqliteDataKit : IMusicDb
+    public class SqliteDataKit : IDataKit 
     {
 	private SqliteConnection conn;
 	private string dbfile = "musicdb.sqlite";
@@ -43,6 +43,28 @@ namespace Player.Data.Kits
 	    if (isNew)
 		SetupDb ();
 	}
+
+	private string name = "SqliteDataKit";
+	public string Name {
+		get {
+			return name;
+		}
+	}
+	
+	private string version = "0.1";
+	public string Version {
+		get {
+			return version;
+		}
+	}
+	
+	private string description = "Player.SDK sqlite database kit";
+	public string Description {
+		get {
+			return description;
+		}
+	}
+	
 
 	public ArrayList Songs {
 	    get {
@@ -93,6 +115,14 @@ namespace Player.Data.Kits
 		cmd.Dispose ();
 		return albums;
 	    }
+	}
+
+	public void Load ()
+	{
+	}
+
+	public void Unload ()
+	{
 	}
 
 	public bool AddSong (Song song)

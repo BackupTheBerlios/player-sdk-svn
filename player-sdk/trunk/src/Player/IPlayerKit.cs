@@ -3,6 +3,7 @@ namespace Player.Player
 {
 
     using Player.Playlist;
+	using Player.Kits;
 
 	public enum RepetitionType {
 				    RepeatSong,
@@ -13,7 +14,7 @@ namespace Player.Player
 	public delegate void TickEventHandler (int pos);
 	public delegate void StateEventHandler (bool playing);
 						
-	public interface IPlayer {
+	public interface IPlayerKit : IKit {
 	
 	    bool Playing {get; set;}
 	    int Position {get; set;}

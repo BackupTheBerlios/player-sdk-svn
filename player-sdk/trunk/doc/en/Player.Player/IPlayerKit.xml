@@ -1,5 +1,5 @@
-<Type Name="IPlayer" FullName="Player.Player.IPlayer">
-  <TypeSignature Language="C#" Value="public abstract interface IPlayer" Maintainer="auto" />
+<Type Name="IPlayerKit" FullName="Player.Player.IPlayerKit">
+  <TypeSignature Language="C#" Value="public abstract interface IPlayerKit" Maintainer="auto" />
   <AssemblyInfo>
     <AssemblyName>Player.Sdk</AssemblyName>
     <AssemblyPublicKey>
@@ -14,7 +14,14 @@
     <remarks>To be added</remarks>
   </Docs>
   <Base />
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Player.Kits.IKit</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Player.Addins.IAddin</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Attributes />
   <Members>
     <Member MemberName="Play">

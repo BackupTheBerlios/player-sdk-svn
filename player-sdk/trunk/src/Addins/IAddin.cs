@@ -17,25 +17,20 @@
  * Boston, MA 02111-1307, USA.
  */
 
-namespace Player.Data 
+namespace Player.Addins
 {
-    using System;
-    using System.Collections;
+    using System;    
 
-    public interface IMusicDb
-    {
-	ArrayList Songs { get; }
+	public interface IAddin
+	{
 
-	ArrayList Albums { get; }
-
-	bool AddSong (Song song);
-
-	bool AddAlbum (Album album);
-
-	bool RemoveSong (Song song);
-
-	bool RemoveAlbum (Album album);
-    }
+		string Version { get; }
+		string Name { get; }
+		string Description { get; }
+		void Load ();
+		void Unload ();
+		
+	}
 
 }
 

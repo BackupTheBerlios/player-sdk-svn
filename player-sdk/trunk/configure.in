@@ -41,6 +41,7 @@ src/Makefile
 src/player-sdk.pc
 PlayerKits/Makefile
 PlayerKits/Gstreamer/Makefile
+PlayerKits/Gstreamer/GstPlayer.dll.config
 DataKits/Makefile
 DataKits/Sqlite/Makefile
 ])

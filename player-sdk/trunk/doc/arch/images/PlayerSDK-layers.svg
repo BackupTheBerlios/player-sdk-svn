@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   id="svg1"
+   sodipodi:version="0.32"
+   inkscape:version="0.39"
+   width="210mm"
+   height="297mm"
+   sodipodi:docbase="/home/rubiojr/Desktop/player-sdk-trunk/doc/arch/images"
+   sodipodi:docname="PlayerSDK-layers.svg"
+   inkscape:export-filename="/home/rubiojr/Desktop/PlayerSDK-layers.png"
+   inkscape:export-xdpi="66.110001"
+   inkscape:export-ydpi="66.110001"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:xml="http://www.w3.org/XML/1998/namespace"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs
+     id="defs3" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.0000000"
+     inkscape:cx="289.78603"
+     inkscape:cy="536.56995"
+     inkscape:window-width="1016"
+     inkscape:window-height="697"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-x="0"
+     inkscape:window-y="25" />
+  <metadata
+     id="metadata4">
+    <rdf:RDF
+       id="RDF5">
+      <cc:Work
+         rdf:about=""
+         id="Work6">
+        <dc:format
+           id="format7">image/svg+xml</dc:format>
+        <dc:type
+           id="type9"
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <rect
+     style="fill:#b9b9b9;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;"
+     id="rect908"
+     width="475.05707"
+     height="161.23149"
+     x="175.62717"
+     y="456.38150"
+     rx="0.0000000"
+     ry="39.570000"
+     transform="matrix(1.000000,0.000000,0.000000,1.234787,-37.42874,-96.92868)" />
+  <rect
+     style="fill:#d40000;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;"
+     id="rect1530"
+     width="475.05707"
+     height="161.23149"
+     x="175.62717"
+     y="456.38150"
+     rx="0.0000000"
+     ry="47.666561"
+     transform="matrix(1.000000,0.000000,0.000000,1.025048,-37.42874,-172.5226)" />
+  <rect
+     style="fill:#f5ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;"
+     id="rect4644"
+     width="73.417908"
+     height="103.64882"
+     x="267.75943"
+     y="136.79764"
+     ry="63.933094"
+     rx="0.0000000"
+     transform="matrix(2.657195,0.000000,0.000000,0.574177,-548.1108,356.7164)" />
+  <text
+     xml:space="preserve"
+     style="font-size:12.000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr;"
+     x="207.29762"
+     y="434.78799"
+     id="text4646"
+     sodipodi:linespacing="100%"
+     transform="matrix(1.985149,0.000000,0.000000,1.852538,-202.1242,-332.1549)"><tspan
+       x="207.29762"
+       y="434.78799"
+       sodipodi:role="line"
+       id="tspan4661">DataKit</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:12.000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr;"
+     x="331.10040"
+     y="380.80423"
+     id="text4655"
+     transform="matrix(1.845173,0.000000,0.000000,1.743752,-464.7415,-344.1027)"
+     sodipodi:linespacing="100%"><tspan
+       id="tspan4656">Player.SDK</tspan></text>
+  <rect
+     style="fill:#f5ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;"
+     id="rect1585"
+     width="73.417908"
+     height="103.64882"
+     x="267.75943"
+     y="136.79764"
+     ry="63.933094"
+     rx="0.0000000"
+     transform="matrix(2.657195,0.000000,0.000000,0.574177,-321.0187,356.7164)" />
+  <text
+     xml:space="preserve"
+     style="font-size:12.000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr;"
+     x="207.29762"
+     y="434.78799"
+     id="text4683"
+     sodipodi:linespacing="100%"
+     transform="matrix(1.985149,0.000000,0.000000,1.852538,14.42957,-334.3964)"><tspan
+       x="207.29762"
+       y="434.78799"
+       sodipodi:role="line"
+       id="tspan4690">PlayerKit</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:12.000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr;"
+     x="331.10040"
+     y="380.80423"
+     id="text4712"
+     transform="matrix(1.845173,0.000000,0.000000,1.743752,-347.5967,-92.18856)"
+     sodipodi:linespacing="100%"><tspan
+       x="331.10040"
+       y="380.80423"
+       sodipodi:role="line"
+       id="tspan4715">Operating System</tspan></text>
+  <g
+     id="g1595"
+     transform="matrix(0.773004,0.000000,0.000000,1.000000,86.12319,0.000000)">
+    <rect
+       style="fill:#f5ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;"
+       id="rect1577"
+       width="73.417908"
+       height="103.64882"
+       x="267.75943"
+       y="136.79764"
+       ry="103.99666"
+       rx="0.0000000"
+       transform="matrix(5.762392,0.000000,0.000000,0.352981,-1379.819,339.4165)" />
+    <text
+       xml:space="preserve"
+       style="font-size:12.000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr;"
+       x="207.29762"
+       y="434.78799"
+       id="text1589"
+       sodipodi:linespacing="100%"
+       transform="matrix(1.985149,0.000000,0.000000,1.852538,-86.93247,-393.4187)"><tspan
+         x="207.29762"
+         y="434.78799"
+         sodipodi:role="line"
+         id="tspan1592">Playlist</tspan></text>
+  </g>
+  <rect
+     style="fill:#f5ff00;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;"
+     id="rect1602"
+     width="73.417908"
+     height="103.64882"
+     x="267.75943"
+     y="136.79764"
+     ry="103.99666"
+     rx="0.0000000"
+     transform="matrix(5.762392,0.000000,0.000000,0.352981,-1380.899,292.6307)" />
+  <text
+     xml:space="preserve"
+     style="font-size:12.000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr;"
+     x="207.29762"
+     y="434.78799"
+     id="text1603"
+     sodipodi:linespacing="100%"
+     transform="matrix(1.985149,0.000000,0.000000,1.852538,-88.01203,-440.2045)"><tspan
+       x="207.29762"
+       y="434.78799"
+       sodipodi:role="line"
+       id="tspan1610">Plugins</tspan></text>
+  <rect
+     style="fill:#5f9bff;fill-opacity:1.0000000;fill-rule:evenodd;stroke:#000000;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;"
+     id="rect943"
+     width="475.05707"
+     height="161.23149"
+     x="175.62717"
+     y="456.38150"
+     rx="0.0000000"
+     ry="95.914467"
+     transform="matrix(1.000000,0.000000,0.000000,0.509417,-37.42874,-25.56866)"
+     inkscape:export-filename="/home/rubiojr/Desktop/PlayerSDK-layers.png"
+     inkscape:export-xdpi="75.638313"
+     inkscape:export-ydpi="75.638313" />
+  <text
+     xml:space="preserve"
+     style="font-size:12.000000;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1.0000000;stroke:none;stroke-width:1.0000000pt;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1.0000000;font-family:Bitstream Vera Sans;text-anchor:start;writing-mode:lr;"
+     x="331.10040"
+     y="380.80423"
+     id="text1566"
+     transform="matrix(1.845173,0.000000,0.000000,1.743752,-464.7415,-425.9749)"
+     sodipodi:linespacing="100%"><tspan
+       x="331.10040"
+       y="380.80423"
+       sodipodi:role="line"
+       id="tspan1569">Graphical User Interface</tspan></text>
+</svg>

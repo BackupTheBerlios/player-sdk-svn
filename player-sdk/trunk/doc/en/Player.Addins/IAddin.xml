@@ -1,0 +1,84 @@
+<Type Name="IAddin" FullName="Player.Addins.IAddin">
+  <TypeSignature Language="C#" Value="public abstract interface IAddin" Maintainer="auto" />
+  <AssemblyInfo>
+    <AssemblyName>Player.Sdk</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <AssemblyCulture>neutral</AssemblyCulture>
+    <Attributes />
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Base />
+  <Interfaces />
+  <Attributes />
+  <Members>
+    <Member MemberName="Load">
+      <MemberSignature Language="C#" Value="public virtual void Load ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Unload">
+      <MemberSignature Language="C#" Value="public virtual void Unload ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Version">
+      <MemberSignature Language="C#" Value="public virtual string Version { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.String" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public virtual string Name { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.String" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Description">
+      <MemberSignature Language="C#" Value="public virtual string Description { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>System.String</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:System.String" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

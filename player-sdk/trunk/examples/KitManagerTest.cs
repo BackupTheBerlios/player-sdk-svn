@@ -18,20 +18,17 @@
  */
 
 using System;    
-using Player.Data;
+using Player.Kits;
 using Gtk;
 
-public class DbTest
+public class KitManagerTest
 {
-    public DbTest ()
-    {
-    }
-    
-    public static void Main (string[] args)
-    {
-	    Application.Init ();
-	    Song s = new Song ("test.mp3");
-	    Application.Run ();
-    }
+	public static void Main ()
+	{
+		Application.Init ();
+		KitManager manager = KitManager.GetInstance ();
+		Application.Run ();
+	}
 }
+
 

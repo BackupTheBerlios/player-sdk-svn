@@ -17,21 +17,14 @@
  * Boston, MA 02111-1307, USA.
  */
 
-using System;    
-using Player.Data;
-using Gtk;
-
-public class DbTest
+namespace Player.Kits 
 {
-    public DbTest ()
-    {
-    }
-    
-    public static void Main (string[] args)
-    {
-	    Application.Init ();
-	    Song s = new Song ("test.mp3");
-	    Application.Run ();
-    }
+    using System;    
+	using Player.Addins;
+
+	public interface IKit : IAddin
+	{
+	}
+
 }
 

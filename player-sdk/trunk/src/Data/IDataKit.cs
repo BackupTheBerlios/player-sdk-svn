@@ -17,18 +17,25 @@
  * Boston, MA 02111-1307, USA.
  */
 
-namespace Player.Services 
+namespace Player.Data 
 {
-    using System;    
+    using System;
+    using System.Collections;
+	using Player.Kits;
 
-    public class ServiceUnavailableException : Exception
+    public interface IDataKit : IKit
     {
-	public ServiceUnavailableException (string message, Exception innerException) 
-	: base (message, innerException)
-	{
-	}
+		ArrayList Songs { get; }
 
-	public ServiceUnavailableException (string message) : base (message) {}
+		ArrayList Albums { get; }
+
+		bool AddSong (Song song);
+
+		bool AddAlbum (Album album);
+
+		bool RemoveSong (Song song);
+
+		bool RemoveAlbum (Album album);
     }
 
 }

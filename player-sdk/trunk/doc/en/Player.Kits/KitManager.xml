@@ -1,0 +1,85 @@
+<Type Name="KitManager" FullName="Player.Kits.KitManager">
+  <TypeSignature Language="C#" Value="public class KitManager" Maintainer="auto" />
+  <AssemblyInfo>
+    <AssemblyName>Player.Sdk</AssemblyName>
+    <AssemblyPublicKey>
+    </AssemblyPublicKey>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <AssemblyCulture>neutral</AssemblyCulture>
+    <Attributes />
+  </AssemblyInfo>
+  <ThreadSafetyStatement>Gtk# is thread aware, but not thread safe; See the <link location="node:gtk-sharp/programming/threads">Gtk# Thread Programming</link> for details.</ThreadSafetyStatement>
+  <Docs>
+    <summary>To be added</summary>
+    <remarks>To be added</remarks>
+  </Docs>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.Reflection.DefaultMemberAttribute</AttributeName>
+    </Attribute>
+  </Attributes>
+  <Members>
+    <Member MemberName="GetInstance">
+      <MemberSignature Language="C#" Value="public static Player.Kits.KitManager GetInstance ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>Player.Kits.KitManager</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <returns>a <see cref="T:Player.Kits.KitManager" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="UpdateKits">
+      <MemberSignature Language="C#" Value="public void UpdateKits ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters />
+      <Docs>
+        <summary>To be added</summary>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="SwapKit">
+      <MemberSignature Language="C#" Value="public void SwapKit (string kitType, Player.Kits.IKit kit);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue>
+        <ReturnType>System.Void</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="kitType" Type="System.String" />
+        <Parameter Name="kit" Type="Player.Kits.IKit" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="kitType">a <see cref="T:System.String" /></param>
+        <param name="kit">a <see cref="T:Player.Kits.IKit" /></param>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="Item">
+      <MemberSignature Language="C#" Value="public Player.Kits.IKit Item { set; get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue>
+        <ReturnType>Player.Kits.IKit</ReturnType>
+      </ReturnValue>
+      <Parameters>
+        <Parameter Name="kitName" Type="System.String" />
+      </Parameters>
+      <Docs>
+        <summary>To be added</summary>
+        <param name="kitName">a <see cref="T:System.String" /></param>
+        <returns>a <see cref="T:Player.Kits.IKit" /></returns>
+        <remarks>To be added</remarks>
+      </Docs>
+    </Member>
+  </Members>
+</Type>

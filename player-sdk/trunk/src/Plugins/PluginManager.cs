@@ -17,21 +17,45 @@
  * Boston, MA 02111-1307, USA.
  */
 
-using System;    
-using Player.Data;
-using Gtk;
-
-public class DbTest
+namespace Player.Plugins 
 {
-    public DbTest ()
-    {
-    }
-    
-    public static void Main (string[] args)
-    {
-	    Application.Init ();
-	    Song s = new Song ("test.mp3");
-	    Application.Run ();
-    }
+    using System;
+	using System.Collections;
+
+	public class PluginManager
+	{
+
+		private Hashtable plugins;
+		private Hashtable loadedPlugins;
+
+		public PluginManager ()
+		{
+		}
+
+		internal void LoadAllPlugins ()
+		{
+		}
+
+		public void UnloadPlugin (string pluginId)
+		{
+		}
+
+		public void UpdatePlugin (string pluginId)
+		{
+		}
+
+		public void LoadPlugin (string pluginId)
+		{
+		}
+
+		public void DisablePlugin (string pluginId)
+		{
+		}
+
+		public void EnablePlugin (string pluginId)
+		{
+		}
+	}
+
 }
 

@@ -1,3 +1,40 @@
+2004-11-07  Sergio Rubio  <sergio.rubio@hispalinux.es>
+
+	* DataKits/Sqlite/SqliteDataKit.cs:
+	* PlayerKits/Gstreamer/GstPlayer.cs: (GstPlayer): Updated to use the new
+	IDataKit name.
+	* PlayerKits/Gstreamer/GstPlayer.dll.config:
+	* PlayerKits/Gstreamer/GstPlayer.dll.config.in: fixed native library
+	prefix and processed by configure.
+	* PlayerKits/Gstreamer/Makefile.am:
+	* PlayerSdk.ini: Added Plugins section
+	* configure.in: Added GstPlayer.dll.config.in processing
+	* doc/Makefile.am: Added disthock to include the docs
+	* doc/*: monodoc docs regenerated. Added dia uml files and architecture
+	docs and images.
+	* examples/DbTest.cs: (DbTest.Main): Fixed
+	* examples/KitManagerTest.cs: New example test
+	(KitManagerTest.Main):
+	* examples/Makefile.am: New example test
+	* src/Addins/AddinLoader.cs: 
+	* src/Addins/AddinLoadingException.cs:
+	* src/Addins/AddinUnavailableException.cs:
+	* src/Addins/IAddin.cs: New Addins namespace
+	* src/Data/IDataKit.cs:
+	* src/Data/IMusicDb.cs: Renamed to IDataKit
+	* src/Kits/IKit.cs: 
+	* src/Kits/KitManager.cs: New Kits namespace
+	* src/Player/IPlayer.cs: Renamed to IPlayerKit
+	* src/Player/IPlayerKit.cs: 
+	* src/Plugins/IPlugin.cs:
+	* src/Plugins/PluginManager.cs: Added Plugins namespace
+	* src/Services/SdkServices.cs:
+	* src/Services/ServiceUnavailableException.cs:
+	* src/Services/tests/Makefile:
+	* src/Services/tests/SdkServicesTest.cs: Removed obsolete Services
+	namespace
+	* src/sources.list: updated
+
 2004-10-24  Sergio Rubio  <sergio.rubio@hispalinux.es>
 	
 	* Docs regenerated

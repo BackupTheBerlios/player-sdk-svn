@@ -1,5 +1,5 @@
-<Type Name="IMusicDb" FullName="Player.Data.IMusicDb">
-  <TypeSignature Language="C#" Value="public abstract interface IMusicDb" Maintainer="auto" />
+<Type Name="IDataKit" FullName="Player.Data.IDataKit">
+  <TypeSignature Language="C#" Value="public abstract interface IDataKit" Maintainer="auto" />
   <AssemblyInfo>
     <AssemblyName>Player.Sdk</AssemblyName>
     <AssemblyPublicKey>
@@ -14,7 +14,14 @@
     <remarks>To be added</remarks>
   </Docs>
   <Base />
-  <Interfaces />
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Player.Kits.IKit</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>Player.Addins.IAddin</InterfaceName>
+    </Interface>
+  </Interfaces>
   <Attributes />
   <Members>
     <Member MemberName="AddSong">
