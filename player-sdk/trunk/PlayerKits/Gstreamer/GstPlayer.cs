@@ -20,6 +20,7 @@
 
 
 using System;
+using System.IO;
 using System.Runtime.InteropServices;
 using GLib;
 using Player.Player;
@@ -31,6 +32,32 @@ public class GstPlayer : GLib.Object, IPlayerKit
 
     private bool stopped = true;
     private IPlaylist playlist;
+    
+	/*
+     * Main constructor
+     */
+    public GstPlayer (IPlaylist playlist) : base (IntPtr.Zero)
+    {
+		g_type_init ();
+	    this.playlist = playlist;
+	    IntPtr error_ptr;
+	    
+	    Raw = player_new (out error_ptr);
+	    if (error_ptr != IntPtr.Zero) {
+		    string error = GLib.Marshaller.PtrToStringGFree (error_ptr);
+
+		    throw new Exception (error);
+	    }
+	    
+	    ConnectInt.g_signal_connect_data (Raw, "tick", new IntSignalDelegate (TickCallback),
+					      IntPtr.Zero, IntPtr.Zero, 0);
+	    Connect.g_signal_connect_data (Raw, "end_of_stream", new SignalDelegate (EosCallback),
+					   IntPtr.Zero, IntPtr.Zero, 0);
+	    ConnectString.g_signal_connect_data (Raw, "error", new StringSignalDelegate (ErrorCallback),
+						 IntPtr.Zero, IntPtr.Zero, 0);
+
+	    playing = false;
+    }
 
     public event StateEventHandler StateEvent;
     /*
@@ -49,11 +76,9 @@ public class GstPlayer : GLib.Object, IPlayerKit
 		    playing = value;
 
 		    if (playing)
-		    {
-			Play ();
-		    }
+				Play ();
 		    else
-			Pause ();
+				Pause ();
 
 		    if (StateEvent != null)
 			    StateEvent (playing);
@@ -137,6 +162,11 @@ public class GstPlayer : GLib.Object, IPlayerKit
 	    IntPtr error_ptr;
 
 	    Song song = playlist.Current;
+		if (song == null || !File.Exists(song.Filename))
+		{
+			Console.WriteLine ("WARNING: Playlist empty or invalid.");
+			return;
+		}
 	    player_set_file (Raw, song.Filename , out error_ptr);
 	    if (error_ptr != IntPtr.Zero) {
 		    string error = GLib.Marshaller.PtrToStringGFree (error_ptr);
@@ -148,8 +178,11 @@ public class GstPlayer : GLib.Object, IPlayerKit
 	    if (TickEvent != null)
 		    TickEvent (0);
 
-	    if (playing)
-		    player_play (Raw);
+	    if (!playing)
+			playing = true;
+		Console.WriteLine ("Playing " + song.Filename);
+		player_play (Raw);
+		
     }
 
     public void Pause ()
@@ -196,31 +229,6 @@ public class GstPlayer : GLib.Object, IPlayerKit
     {
     }
 
-    /*
-     * Main constructor
-     */
-    public GstPlayer (IPlaylist playlist) : base (IntPtr.Zero)
-    {
-	    this.playlist = playlist;
-	    IntPtr error_ptr;
-	    
-	    Raw = player_new (out error_ptr);
-	    if (error_ptr != IntPtr.Zero) {
-		    string error = GLib.Marshaller.PtrToStringGFree (error_ptr);
-
-		    throw new Exception (error);
-	    }
-	    
-	    ConnectInt.g_signal_connect_data (Raw, "tick", new IntSignalDelegate (TickCallback),
-					      IntPtr.Zero, IntPtr.Zero, 0);
-	    Connect.g_signal_connect_data (Raw, "end_of_stream", new SignalDelegate (EosCallback),
-					   IntPtr.Zero, IntPtr.Zero, 0);
-	    ConnectString.g_signal_connect_data (Raw, "error", new StringSignalDelegate (ErrorCallback),
-						 IntPtr.Zero, IntPtr.Zero, 0);
-
-	    playing = false;
-    }
-
     ~GstPlayer ()
     {
 	    Dispose ();
@@ -252,6 +260,9 @@ public class GstPlayer : GLib.Object, IPlayerKit
     /***********************************************************/	
     /********************** Native calls ***********************/
     /***********************************************************/	
+	[DllImport("libgobject-2.0.so")]
+	private static extern void g_type_init ();
+	
     private class Connect
     {
 	    [DllImport ("libgobject-2.0-0.dll")]

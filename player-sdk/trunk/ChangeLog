@@ -1,3 +1,13 @@
+2004-11-09  Sergio Rubio  <sergio.rubio@hispalinux.es>
+
+	* PlayerKits/Gstreamer/GstPlayer.cs: Added null or wrong file check
+	call g_type_init ()
+	
+	* examples/Makefile.am: added new PlayerTest example
+	* examples/PlayerTest.cs:
+	
+	* src/Playlist/Playlist.cs: Added check for file
+
 2004-11-07  Sergio Rubio  <sergio.rubio@hispalinux.es>
 
 	* DataKits/Sqlite/SqliteDataKit.cs:

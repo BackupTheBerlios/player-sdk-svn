@@ -22,6 +22,7 @@ namespace Player.Playlist
 
     using System.Collections;
     using System;
+	using System.IO;
     using Player.Data;
 
     /* 
@@ -140,20 +141,20 @@ namespace Player.Playlist
 
 	public Song Current {
 	    get {
-		if (list.Count == 0)
-		    return null;
-		return list[currentSong] as Song;
+			if (list.Count == 0)
+				return null;
+			return list[currentSong] as Song;
 	    }
 	    set {
-		int index = IndexOf (value);
-		if (index != -1)
-		{
-		    currentSong = index;
-		    if (SongChangedEvent != null)
-			SongChangedEvent (this, value);
-		}
-		else
-		    Console.WriteLine ("WARNING: Invalid current item in playlist");
+			int index = IndexOf (value);
+			if (index != -1)
+			{
+				currentSong = index;
+				if (SongChangedEvent != null)
+				SongChangedEvent (this, value);
+			}
+			else
+				Console.WriteLine ("WARNING: Invalid current item in playlist");
 	    }
 	}
 
@@ -185,7 +186,9 @@ namespace Player.Playlist
 	private void CheckSong (object obj)
 	{
 	    if (!(obj is Song))
-		throw new ArgumentException ("You should only append Songs to the playlist");
+			throw new ArgumentException ("You should only append Songs to the playlist");
+		if (!File.Exists (((Song)obj).Filename))
+			throw new ArgumentException ("ERROR: Song does not exists");
 	}
 
 	public object this[int index] {
