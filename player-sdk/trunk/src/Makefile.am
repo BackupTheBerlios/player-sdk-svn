@@ -1,7 +1,7 @@
 include sources.list
 
 MISCRS = /resource:../PlayerSdk.ini,PlayerSdk.ini
-REFERENCES = -pkg:chicken
+#REFERENCES = -pkg:chicken
 
 Player.Sdk.dll: $(CSSOURCES)
 	mcs /out:$@ $(CSSOURCES) /target:library $(MISCRS) $(REFERENCES)

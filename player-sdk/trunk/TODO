@@ -1,7 +1,6 @@
 General
 ---------
 * Use log4net
-* Include the Nini framework and remove chicken dep
 
 Plugins
 --------------------
