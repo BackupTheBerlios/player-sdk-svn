@@ -1,5 +1,9 @@
 2004-11-09  Sergio Rubio  <sergio.rubio@hispalinux.es>
 
+	* examples/Makefile.am: Added EXTRA_DIST and CLEANFILES
+
+2004-11-09  Sergio Rubio  <sergio.rubio@hispalinux.es>
+
 	* PlayerKits/Gstreamer/GstPlayer.cs: Added null or wrong file check
 	call g_type_init ()
 	

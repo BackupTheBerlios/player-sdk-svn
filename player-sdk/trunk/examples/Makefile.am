@@ -13,3 +13,5 @@ player-test.exe: PlayerTest.cs
 kitmanager-test.exe: KitManagerTest.cs
 	mcs KitManagerTest.cs -o $@ $(REFERENCES)
 	
+EXTRA_DIST= *.cs test.ogg
+CLEANFILES= *.exe
